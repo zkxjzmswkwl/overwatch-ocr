@@ -1,5 +1,4 @@
 import cv2
-import pprint
 import pytesseract
 import numpy as np
 from pytesseract import Output
