@@ -5,19 +5,23 @@ from pytesseract import Output
 
 # Keeping everything in one file so it's easy to consume, as this is an example not something I'm pushing to production.
 
-a_img = cv2.imread('images/at_vs_od.png')
 HEROES = [
     'Tracer', 'Ashe', 'Wrecking Ball',
     'Sigma', 'Mercy', 'Zenyatta',
-    'Baptiste', 'Echo'
+    'Baptiste', 'Echo', 'Brigitte'
 ]
 
 def match_image(img, sub):
     sub_img = cv2.imread(f'images/heroes/{sub}.png')
+
+    # Preprocess both player spectator widget and hero template
+    sub_img = preprocess(sub_img)
+    img = preprocess(img)
+
     w, h = sub_img.shape[:-1]
 
     res = cv2.matchTemplate(img, sub_img, cv2.TM_CCOEFF_NORMED)
-    threshold = .7
+    threshold = .69
     loc = np.where(res >= threshold)
 
     for pt in zip(*loc[::-1]):
@@ -42,7 +46,7 @@ def parse_team(img, team, find_hero=False):
     team_result = {}
 
     if team.lower() == 'blue':
-        x1 = 40
+        x1 = 50
         x2 = x1 + 90
     elif team.lower() == 'red':
         x1 = 1250
@@ -62,9 +66,8 @@ def parse_team(img, team, find_hero=False):
     return team_result
 
 
-
-blue = parse_team('images/at_vs_od.png', 'blue', find_hero=True)
-red = parse_team('images/at_vs_od.png', 'red', find_hero=True)
+blue = parse_team('images/bh_vs_at.png', 'blue', find_hero=True)
+red = parse_team('images/bh_vs_at.png', 'red', find_hero=True)
 
 print('\nOn the blue team we have..')
 print('****************************\n')
