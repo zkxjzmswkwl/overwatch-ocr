@@ -24,3 +24,26 @@ x2 = x1 + 90
 ```
 The delta between each player-block in the spectator UI is ~100. However I've found that `106` gives the best ocr
 results.
+
+# Example output
+```
+On the blue team we have..
+****************************
+
+MALTHEL playing Tracer.
+N2S playing Echo.
+RHYNO playing Wrecking Ball.
+VULCAN playing Sigma.
+RAKATTACK playing Mercy.
+LUKEMINO playing Baptiste.
+
+And on the red team we have..
+****************************
+
+HYDRON playing Tracer.
+SPEEDILY playing Echo.
+SH2PE playing Wrecking Ball.
+CUCUMBER playing Sigma.
+OJEE playing Mercy.
+ULTRAVIOLET playing Zenyatta.
+```
