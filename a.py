@@ -41,7 +41,6 @@ def preprocess(to_process):
     return to_process
 
 def parse_team(img, team, find_hero=False):
-    img = cv2.imread(img)
     x1 = x2 = None
     team_result = {}
 
@@ -66,8 +65,9 @@ def parse_team(img, team, find_hero=False):
     return team_result
 
 
-blue = parse_team('images/bh_vs_at.png', 'blue', find_hero=True)
-red = parse_team('images/bh_vs_at.png', 'red', find_hero=True)
+base_img = cv2.imread('images/bh_vs_at.png')
+blue = parse_team(base_img, 'blue', find_hero=True)
+red = parse_team(base_img, 'red', find_hero=True)
 
 print('\nOn the blue team we have..')
 print('****************************\n')
