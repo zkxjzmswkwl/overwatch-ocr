@@ -1,5 +1,5 @@
 # Overwatch Optical Character Recognition
-Overwatch OCR is a bit annoying. You have to train Tesseract with the Koverwatch font, and even then it's really not that accurate... Unless you interpolate with OpenCv's `INTER_CUBIC` and blur with OpenCv's `medianBlur` with the intensity set to `3`. This is what I've been able to get the best results with so far.
+Overwatch OCR is a bit annoying. You have to train Tesseract with the Koverwatch font, and even then it's really not that accurate... Unless you interpolate with OpenCv's `INTER_CUBIC` and blur with OpenCv's `medianBlur` with the intensity set to `3`. This is what I've been able to get the best results with so far. Additionally, calling OpenCv's `cvtColor` and passing in `cv2.COLOR_BGR2RGB` helps accuracy on lighter backgrounds greatly. I see no downside to that so far, even on darker backgrounds.
 
 # What's in the repo
 The repo contains images I was testing with. They were all taken from the Odyssey vs. DarkMode NA loser's final gaunlet match from December 2020.
